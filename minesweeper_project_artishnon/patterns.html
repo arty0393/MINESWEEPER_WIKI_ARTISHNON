@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Minesweeper Wiki - รวม Pattern การแก้ระเบิด</title>
+<style type="text/css">
+body { background-color: #008080; font-family: Tahoma, Geneva, sans-serif; margin: 20px; }
+#container { background-color: #C0C0C0; border: 3px double #FFF; width: 800px; margin: 0 auto; padding: 10px; }
+#header { background-color: #000080; color: #FFF; padding: 5px; font-weight: bold; text-align: center; }
+#menu { background-color: #EEE; border: 1px inset #666; padding: 10px; margin: 10px 0; }
+.content-box { background-color: #FFF; border: 2px inset #CCC; padding: 15px; }
+
+/* สไตล์สำหรับตารางจำลองกระดานเกม */
+.mine-table { border-collapse: collapse; margin: 10px 0; background-color: #C0C0C0; }
+.mine-table td { 
+	border: 2px outset #FFF; 
+	width: 35px; 
+	height: 35px; 
+	text-align: center; 
+	font-weight: bold; 
+	font-size: 18px;
+}
+.number-1 { color: blue; }
+.number-2 { color: green; }
+.number-3 { color: red; }
+.flag { color: #000; background-color: #FFCCCC; }
+.safe { background-color: #CCFFCC; }
+</style>
+</head>
+
+<body>
+
+<div id="container">
+  <div id="header">MINESWEEPER_PATTERNS</div>
+  
+  <div id="menu">
+    <strong>เมนูหลัก:</strong> 
+    <a href="file:///C:/งาน/โปรเจคจบ/minesweeper_project_artishnon/index.html">หน้าแรก</a> | 
+    <a href="file:///C:/งาน/โปรเจคจบ/minesweeper_project_artishnon/basics.html">กฎการเล่น</a> | 
+    <a href="file:///C:/งาน/โปรเจคจบ/minesweeper_project_artishnon/patterns.html">รวมเทคนิค Pattern</a> | 
+    <a href="file:///C:/งาน/โปรเจคจบ/minesweeper_project_artishnon/advanced.html">สูตรคำนวณ</a>
+ |
+    <a href="file:///C:/งาน/โปรเจคจบ/minesweeper_project_artishnon/references.html">แหล่งอ้างอิง</a>
+  </div>
+
+  <div class="content-box">
+    <h1>รวมเทคนิคการอ่านตัวเลข (Pattern Recognition)</h1>
+    <hr />
+
+    <h3>1. เทคนิค 1-1 (ขอบกำแพง)</h3>
+    <p>เมื่อเจอเลข 1 สองตัวเรียงกันที่ขอบ ช่องที่สามจะ "ปลอดภัย" เสมอ</p>
+    <table class="mine-table">
+      <tr>
+        <td class="number-1">1</td>
+        <td class="number-1">1</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>?</td>
+        <td>?</td>
+        <td class="safe">✔</td>
+      </tr>
+    </table>
+    <p><em>คำอธิบาย:</em> ระเบิดต้องอยู่ในสองช่องแรก ช่องที่สามจึงกดได้เลย</p>
+
+    <hr />
+
+    <h3>2. เทคนิค 1-2-1 (ยอดนิยม)</h3>
+    <p>สูตรสำเร็จ: <strong>"วางธงข้าง เปิดตรงกลาง"</strong></p>
+    
+    <table class="mine-table">
+      <tr>
+        <td class="number-1">1</td>
+        <td class="number-2">2</td>
+        <td class="number-1">1</td>
+      </tr>
+      <tr>
+        <td class="flag">🚩</td>
+        <td class="safe">✔</td>
+        <td class="flag">🚩</td>
+      </tr>
+    </table>
+    <p><em>คำอธิบาย:</em> เลข 2 ต้องการระเบิด 2 ลูก ซึ่งต้องแยกไปอยู่ซ้ายและขวาตามเงื่อนไขของเลข 1</p>
+
+    <hr />
+
+    <h3>3. เทคนิค 1-2-2-1</h3>
+    <p>สูตรสำเร็จ: <strong>"วางธงตรงเลข 2 สองตัว"</strong></p>
+     
+    <table class="mine-table">
+      <tr>
+        <td class="number-1">1</td>
+        <td class="number-2">2</td>
+        <td class="number-2">2</td>
+        <td class="number-1">1</td>
+      </tr>
+      <tr>
+        <td class="safe">✔</td>
+        <td class="flag">🚩</td>
+        <td class="flag">🚩</td>
+        <td class="safe">✔</td>
+      </tr>
+    </table>
+
+  </div>
+  
+  <p align="center" style="font-size:12px;">Update: 2026 | Minesweeper Expert Guide</p>
+  <p align="center" style="font-size:12px;">create by artishnon</p>
+</div>
+
+</body>
+</html>

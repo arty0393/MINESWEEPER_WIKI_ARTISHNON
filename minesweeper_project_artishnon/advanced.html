@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Minesweeper Wiki - เทคนิคขั้นสูง</title>
+<style type="text/css">
+body { background-color: #008080; font-family: Tahoma, Geneva, sans-serif; margin: 20px; }
+#container { background-color: #C0C0C0; border: 3px double #FFF; width: 800px; margin: 0 auto; padding: 10px; }
+#header { background-color: #000080; color: #FFF; padding: 5px; font-weight: bold; text-align: center; }
+#menu { background-color: #EEE; border: 1px inset #666; padding: 10px; margin: 10px 0; }
+.content-box { background-color: #FFF; border: 2px inset #CCC; padding: 15px; }
+
+/* สไตล์สำหรับตารางขั้นสูง */
+.adv-table { border-collapse: collapse; margin: 10px 0; }
+.adv-table td { 
+	border: 1px solid #666; 
+	width: 40px; 
+	height: 40px; 
+	text-align: center; 
+	font-weight: bold;
+}
+.prob-low { background-color: #DFFFDF; color: green; font-size: 12px; } /* โอกาสรอดสูง */
+.prob-high { background-color: #FFDFFF; color: red; font-size: 12px; }  /* โอกาสตายสูง */
+.highlight { border: 2px solid #000080 !important; }
+</style>
+</head>
+
+<body>
+
+<div id="container">
+  <div id="header">ADVANCED_LOGIC</div>
+  
+  <div id="menu">
+    <strong>เมนูหลัก:</strong> 
+    <a href="file:///C:/งาน/โปรเจคจบ/minesweeper_project_artishnon/index.html">หน้าแรก</a> | 
+    <a href="file:///C:/งาน/โปรเจคจบ/minesweeper_project_artishnon/basics.html">กฎการเล่น</a> | 
+    <a href="file:///C:/งาน/โปรเจคจบ/minesweeper_project_artishnon/patterns.html">รวมเทคนิค Pattern</a> | 
+    <a href="file:///C:/งาน/โปรเจคจบ/minesweeper_project_artishnon/advanced.html">สูตรคำนวณ</a>
+ |
+    <a href="file:///C:/งาน/โปรเจคจบ/minesweeper_project_artishnon/references.html">แหล่งอ้างอิง</a>
+  </div>
+
+  <div class="content-box">
+    <h1>Advanced Logic &amp; Probability</h1>
+    <p>เมื่อรูปแบบ (Pattern) ปกติช่วยไม่ได้ คุณต้องใช้ตรรกะขั้นสูงและการคำนวณโอกาสรอดเข้ามาช่วย</p>
+    
+    <hr />
+
+    <h3>1. เทคนิคการลดรูป (Reducing Patterns)</h3>
+    <p>บางครั้งตัวเลขที่ดูซับซ้อน สามารถ "หักลบ" ระเบิดที่เรารู้ตำแหน่งแล้วออกไปเพื่อให้กลายเป็น Pattern ง่ายๆ เช่น 1-2-1 ได้</p>
+    
+
+    <hr />
+
+    <h3>2. การคำนวณความน่าจะเป็น (Probability)</h3>
+    <p>ในกรณีที่ต้อง <strong>"เดา"</strong> ให้เลือกช่องที่มีโอกาสเกิดระเบิดน้อยที่สุด:</p>
+    
+    <table class="adv-table">
+      <tr>
+        <td>&nbsp;</td>
+        <td class="highlight">1</td>
+        <td class="highlight">2</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="prob-low">25%</td>
+        <td class="prob-high">75%</td>
+        <td class="prob-high">75%</td>
+        <td class="prob-low">25%</td>
+      </tr>
+    </table>
+    <p><em>หลักการ:</em> พิจารณาว่าระเบิด 1 ลูกของเลข 1 สามารถวางได้กี่แบบ และไปซ้อนทับกับเงื่อนไขของเลข 2 หรือไม่</p>
+
+    <hr />
+
+    <h3>3. เทคนิค 50/50 (The Dreaded Deadlock)</h3>
+    <p>สถานการณ์ที่น่ากลัวที่สุดคือเมื่อเหลือ 2 ช่องสุดท้ายที่โอกาสเป็นระเบิดคือ 50% เท่ากันเป๊ะๆ</p>
+    <ul>
+      <li><strong>วิธีแก้:</strong> อย่าเสียเวลาคิดนาน ให้ "เดาและกด" ไปเลยเพื่อให้เกมเดินต่อได้ เพราะไม่มีตรรกะใดช่วยได้ในจุดนี้</li>
+    </ul>
+    
+
+    <hr />
+    
+    <h3>4. ค่า 3BV คืออะไร?</h3>
+    <p>สำหรับสาย Speedrun <strong>3BV (Bechtel's Board Benchmark Value)</strong> คือค่าที่บอกว่าต้องคลิกอย่างน้อยกี่ครั้งเพื่อจบกระดานนั้นๆ ยิ่งค่าน้อย แปลว่ากระดานนั้นง่าย</p>
+
+  </div>
+  
+  <p align="center" style="font-size:12px;">Expert Mode Verified | Dreamweaver CS6 Edition</p>
+  <p align="center" style="font-size:12px;">create by artishnon</p>
+</div>
+
+</body>
+</html>
